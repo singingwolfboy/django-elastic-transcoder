@@ -136,3 +136,10 @@ This package provide various signals for you to get notification, and do more th
    :target: https://travis-ci.org/StreetVoice/django-elastic-transcoder
 .. |Coverage Status| image:: https://coveralls.io/repos/StreetVoice/django-elastic-transcoder/badge.png?branch=master
    :target: https://coveralls.io/r/StreetVoice/django-elastic-transcoder?branch=master
+
+Run Tests
+-----------
+
+.. code:: sh
+    $ pip install -r test_requirements.txt
+    $ tox

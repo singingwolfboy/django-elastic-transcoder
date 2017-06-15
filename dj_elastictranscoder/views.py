@@ -4,8 +4,8 @@ from django.http import HttpResponse, HttpResponseBadRequest
 from django.views.decorators.csrf import csrf_exempt
 from django.core.mail import mail_admins
 
-from .models import EncodeJob
-from .signals import (
+from dj_elastictranscoder.models import EncodeJob
+from dj_elastictranscoder.signals import (
     transcode_onprogress,
     transcode_onerror,
     transcode_oncomplete

@@ -3,7 +3,7 @@ from boto3.session import Session
 from django.conf import settings
 from django.contrib.contenttypes.models import ContentType
 
-from .models import EncodeJob
+from dj_elastictranscoder.models import EncodeJob
 
 
 class Transcoder(object):

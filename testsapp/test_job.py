@@ -13,7 +13,7 @@ from dj_elastictranscoder.signals import (
     transcode_oncomplete
 )
 
-from .models import Item
+from testsapp.models import Item
 
 
 
