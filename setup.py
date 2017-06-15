@@ -15,7 +15,7 @@ setup(
     include_package_data=True,
     zip_safe=False,
     install_requires=[
-        "django >= 1.10",
+        "django >= 1.8",
         "boto3 >= 1.1",
         "South >= 0.8",
     ],
