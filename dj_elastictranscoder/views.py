@@ -1,4 +1,5 @@
 import json
+import requests
 
 from django.http import HttpResponse, HttpResponseBadRequest
 from django.views.decorators.http import require_http_methods
@@ -26,13 +27,14 @@ def endpoint(request):
     # handle SNS subscription
     if data['Type'] == 'SubscriptionConfirmation':
         subscribe_url = data['SubscribeURL']
+        requests.get(subscribe_url)
         subscribe_body = """
-        Please visit this URL below to confirm your subscription with SNS
+        This URL will confirm your subscription with SNS. I've already visited it, but you can too!
 
         %s """ % subscribe_url
 
         mail_admins('Please confirm SNS subscription', subscribe_body)
-        return HttpResponse('OK')
+        return HttpResponse('Subscription confirmed')
 
     #
     try:
