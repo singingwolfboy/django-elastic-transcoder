@@ -1,6 +1,7 @@
 import json
 
 from django.http import HttpResponse, HttpResponseBadRequest
+from django.views.decorators.http import require_http_methods
 from django.views.decorators.csrf import csrf_exempt
 from django.core.mail import mail_admins
 
@@ -12,16 +13,15 @@ from dj_elastictranscoder.signals import (
 )
 
 @csrf_exempt
+@require_http_methods(["GET", "POST"])
 def endpoint(request):
     """
     Receive SNS notification
     """
-
     try:
         data = json.loads(request.read().decode('utf-8'))
     except ValueError:
         return HttpResponseBadRequest('Invalid JSON')
-
 
     # handle SNS subscription
     if data['Type'] == 'SubscriptionConfirmation':
@@ -34,7 +34,6 @@ def endpoint(request):
         mail_admins('Please confirm SNS subscription', subscribe_body)
         return HttpResponse('OK')
 
-    
     #
     try:
         message = json.loads(data['Message'])
